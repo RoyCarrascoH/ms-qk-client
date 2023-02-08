@@ -7,7 +7,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import nttdata.bootcamp.quarkus.client.application.ClientService;
-import nttdata.bootcamp.quarkus.client.model.Client;
+import nttdata.bootcamp.quarkus.client.entity.Client;
 import java.util.List;
 
 @Path("/api/clients")
@@ -19,7 +19,7 @@ public class GreetingResource {
     @GET
     //@Path("/")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<List<Client>> getClients() {
+    public List<Client> getClients() {
         return service.listAll();
     }
 
