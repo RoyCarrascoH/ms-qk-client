@@ -11,14 +11,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Client {
 
-    private Integer idClient;
+    private String idClient;
     private String personType;
     private String documentType;
     private String documentNumber;
     private String names;
     private String surnames;
     private String sex;
-    private String mail;
+    private String email;
     private String cellPhone;
 
 }
