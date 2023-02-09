@@ -10,4 +10,9 @@ public interface ClientService
 
     public Client findById(Long id);
 
+    public void save(Client client);
+
+    public Client update(Long id, Client client);
+
+    public void delete(Long id);
 }
