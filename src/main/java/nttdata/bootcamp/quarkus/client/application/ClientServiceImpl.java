@@ -12,8 +12,6 @@ public class ClientServiceImpl implements ClientService {
     @Inject
     ClientRepository clientRepository;
 
-    Client oldClient = new Client();
-
     @Override
     public List<Client> listAll() {
         return clientRepository.listAll();

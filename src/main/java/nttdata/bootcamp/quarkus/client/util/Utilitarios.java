@@ -1,7 +1,9 @@
 package nttdata.bootcamp.quarkus.client.util;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import nttdata.bootcamp.quarkus.client.entity.Client;
 
+@ApplicationScoped
 public class Utilitarios {
 
     public static Client saveClient(Client entity, Client client) {

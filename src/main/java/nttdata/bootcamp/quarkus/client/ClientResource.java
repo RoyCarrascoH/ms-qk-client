@@ -60,6 +60,7 @@ public class ClientResource {
         }
 
         entity = Utilitarios.saveClient(entity, client);
+        service.update(idClient,entity);
         return entity;
     }
 
@@ -72,8 +73,7 @@ public class ClientResource {
             throw new WebApplicationException("Client with id of " + idClient + " does not exist.", 404);
         }
         service.delete(entity.getIdClient());
-        return Response.status(204).build();
+        return Response.status(200).build();
     }
-
 
 }
