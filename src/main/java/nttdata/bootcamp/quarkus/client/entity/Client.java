@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.postgresql.util.PSQLException;
 
 @Getter
 @Setter
@@ -13,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Cacheable
-@Table(name = "CLIENTS")
+@Table(name = "clients")
 public class Client extends PanacheEntityBase {
 
     @Id

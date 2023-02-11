@@ -5,5 +5,5 @@ import jakarta.enterprise.context.ApplicationScoped;
 import nttdata.bootcamp.quarkus.client.entity.Client;
 
 @ApplicationScoped
-public class ClientRepository implements PanacheRepository<Client> {
+public class ClientRepository implements PanacheRepository<Client>{
 }

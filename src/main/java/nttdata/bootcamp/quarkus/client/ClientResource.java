@@ -6,6 +6,9 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nttdata.bootcamp.quarkus.client.application.ClientService;
+import nttdata.bootcamp.quarkus.client.dto.ClientDeleteResponse;
+import nttdata.bootcamp.quarkus.client.dto.ClientResponse;
+import nttdata.bootcamp.quarkus.client.dto.ResponseBase;
 import nttdata.bootcamp.quarkus.client.entity.Client;
 import nttdata.bootcamp.quarkus.client.util.Utilitarios;
 import org.jboss.logging.Logger;
@@ -23,8 +26,24 @@ public class ClientResource {
     private ClientService service;
 
     @GET
-    public List<Client> getClients() {
-        return service.listAll();
+    public ClientResponse getClients() {
+        ClientResponse clientsResponse = new ClientResponse();
+        List<Client> clients = service.listAll();
+        if(clients==null){
+            clientsResponse.setCodigoRespuesta(2);
+            clientsResponse.setMensajeRespuesta("Respuesta nula");
+            clientsResponse.setClients(null);
+        }
+        else if(clients.size()==0){
+            clientsResponse.setCodigoRespuesta(1);
+            clientsResponse.setMensajeRespuesta("No existen clientes");
+            clientsResponse.setClients(clients);
+        }else{
+            clientsResponse.setCodigoRespuesta(0);
+            clientsResponse.setMensajeRespuesta("Respuesta Exitosa");
+            clientsResponse.setClients(clients);
+        }
+        return clientsResponse;
     }
 
     @GET
@@ -67,13 +86,20 @@ public class ClientResource {
     @DELETE
     @Path("{idClient}")
     @Transactional
-    public Response delete(@PathParam("idClient") Long idClient) {
+    public ResponseBase delete(@PathParam("idClient") Long idClient) {
+        ResponseBase response = new ResponseBase();
         Client entity = service.findById(idClient);
         if (entity == null) {
+            response.setCodigoRespuesta(1);
+            response.setMensajeRespuesta("Id de cliente no existe");
             throw new WebApplicationException("Client with id of " + idClient + " does not exist.", 404);
+        } else {
+            response.setCodigoRespuesta(0);
+            response.setMensajeRespuesta("Eliminacion exitosa de cliente id = " + idClient);
+            service.delete(entity.getIdClient());
         }
-        service.delete(entity.getIdClient());
-        return Response.status(200).build();
+
+        return response;
     }
 
 }
