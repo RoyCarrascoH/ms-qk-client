@@ -10,6 +10,8 @@ import nttdata.bootcamp.quarkus.client.dto.ClientResponse;
 import nttdata.bootcamp.quarkus.client.dto.ResponseBase;
 import nttdata.bootcamp.quarkus.client.entity.Client;
 import nttdata.bootcamp.quarkus.client.util.Utilitarios;
+import org.eclipse.microprofile.faulttolerance.Retry;
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.jboss.logging.Logger;
 
 import java.util.List;
@@ -25,6 +27,7 @@ public class ClientResource {
     private ClientService service;
 
     @GET
+    @Timeout(180)
     public ClientResponse getClients() {
         ClientResponse clientsResponse = new ClientResponse();
         List<Client> clients = service.listAll();
@@ -47,6 +50,7 @@ public class ClientResource {
 
     @GET
     @Path("{idClient}")
+    @Retry(maxRetries = 4)
     public Client viewClientDetails(@PathParam("idClient") Long idClient) {
         Client entity = service.findById(idClient);
         if (entity == null) {
