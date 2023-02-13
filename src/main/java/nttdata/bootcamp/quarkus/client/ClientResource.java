@@ -27,7 +27,7 @@ public class ClientResource {
     private ClientService service;
 
     @GET
-    @Timeout(180)
+    @Timeout(250)
     public ClientResponse getClients() {
         ClientResponse clientsResponse = new ClientResponse();
         List<Client> clients = service.listAll();
