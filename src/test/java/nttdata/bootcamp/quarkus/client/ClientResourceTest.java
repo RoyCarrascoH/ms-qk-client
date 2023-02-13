@@ -1,12 +1,9 @@
 package nttdata.bootcamp.quarkus.client;
 
-import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.WebApplicationException;
 import nttdata.bootcamp.quarkus.client.application.ClientService;
 import nttdata.bootcamp.quarkus.client.dto.ClientResponse;
 import nttdata.bootcamp.quarkus.client.dto.ResponseBase;
@@ -14,7 +11,6 @@ import nttdata.bootcamp.quarkus.client.entity.Client;
 import nttdata.bootcamp.quarkus.client.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import java.util.ArrayList;
 import java.util.List;
 

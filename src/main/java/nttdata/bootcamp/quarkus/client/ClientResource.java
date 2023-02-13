@@ -6,7 +6,6 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import nttdata.bootcamp.quarkus.client.application.ClientService;
-import nttdata.bootcamp.quarkus.client.dto.ClientDeleteResponse;
 import nttdata.bootcamp.quarkus.client.dto.ClientResponse;
 import nttdata.bootcamp.quarkus.client.dto.ResponseBase;
 import nttdata.bootcamp.quarkus.client.entity.Client;
